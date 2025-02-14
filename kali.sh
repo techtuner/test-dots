@@ -4,6 +4,7 @@
 . scripts/apps.sh
 . scripts/vscode_extensions.sh
 . scripts/config.sh
+. scripts/tools.sh
 
 info "Dotfiles installation has begun"
 
@@ -29,8 +30,7 @@ if [[ "$install_apps" == "y" ]]; then
   info "===================================="
 
   apt_package_install
-  cargo install eza urlencode
-  snap_package_install
+  cargo install eza rustscan urlencode
 
   code&
 
@@ -41,9 +41,11 @@ if [[ "$install_apps" == "y" ]]; then
 
   copy_fonts
   mkdir -p ~/workspace
+  mkdir -p ~/tools
   copy_files
   executing_files
   install_vscode_extension
+  install_tools
 fi
 
 success "The machine has been configured with the required config"
