@@ -19,6 +19,7 @@ apt_package_install(){
     "curl"
     "wget"
     "lightdm"
+    "wezterm"
     "net-tools"
     "dconf-editor"
     "build-essential"
