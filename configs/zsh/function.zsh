@@ -8,27 +8,24 @@ function ghclone() {
     local username=$1
     local repository=$2
 
-    gh repo clone "https://github.com/$username/$repository.git"
-set -e "Run gh auth login to configure Github CLI"
+    gh repo clone "https://github.com/$username/$repository.git" && cd $repository
+    set -e "Run gh auth login to configure Github CLI"
 }
 
 function ghcreate(){
-  if [[ $# -ne 3 ]]; then
-    echo "Usage: ghcreate <repository> <visibility> <username>"
+  if [[ $# -ne 2 && $# -ne 3 ]]; then
+    echo "Usage: ghcreate <repository> <visibility> [<username>]"
     return 1
   fi
 
   local repository=$1
   local visibility=$2
-  local username=$3
+  local username=${3:-techtuner}  # If 3 arguments are provided, use the 3rd argument; otherwise, default to 'techtuner'
 
   gh repo create $repository --$visibility
-  if [[ $username -e " " ]]; then
-    ghclone techtuner $repository
-  else
-    ghclone $username $repository
-  fi
-  }
+  ghclone $username $repository
+  set -e "Run gh auth login to configure Github CLI"
+}
 
 function update-system (){
   sudo apt --fix-broken install -y

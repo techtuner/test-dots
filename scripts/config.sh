@@ -21,9 +21,10 @@ CONFIG_FOLDER="$HOME/.config"
  cp -r ./configs/nvim $CONFIG_FOLDER
  cp ./configs/starship/starship.toml $CONFIG_FOLDER
  cp -r ./configs/wezterm/ $CONFIG_FOLDER
+ sudo cp -r ./configs/dnsmasq/techtuner.conf /etc/dnsmasq.d/
  cp -r ./configs/zsh ~
  cp ./configs/zsh/.zshrc ~
-
+rm -rf ~/zsh/.zshrc
  cp -r ./wallpapers/ ~/Pictures/
 
  }

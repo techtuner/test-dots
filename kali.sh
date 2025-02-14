@@ -21,6 +21,7 @@ if [[ "$install_apps" == "y" ]]; then
   && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
   && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+  curl -sS https://starship.rs/install.sh | sh
   update_system
 
 
@@ -31,6 +32,7 @@ if [[ "$install_apps" == "y" ]]; then
 
   apt_package_install
   cargo install eza rustscan urlencode
+  cargo install starship --locked
 
   code&
 
@@ -48,5 +50,6 @@ if [[ "$install_apps" == "y" ]]; then
   install_tools
 fi
 
+warning "DO REMEMBER TO CHANGE THE nameserver to 127.0.0.1 in /etc/resolv.conf"
 success "The machine has been configured with the required config"
 

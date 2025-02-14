@@ -27,3 +27,4 @@ source ~/zsh/function.zsh
 source ~/zsh/aliases.zsh
 
 export PATH=$PATH:~/.cargo/bin:/~/.local/bin
+eval "$(starship init zsh)"
